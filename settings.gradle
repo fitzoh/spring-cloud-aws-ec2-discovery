@@ -1,2 +1,3 @@
 rootProject.name = 'spring-cloud-aws-ec2-discovery'
 
+include("ec2-discovery-sample-app")
