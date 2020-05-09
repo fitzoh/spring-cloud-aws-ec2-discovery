@@ -20,6 +20,11 @@ public class Ec2ServiceInstance implements ServiceInstance {
 	}
 
 	@Override
+	public String getInstanceId() {
+		return instance.getInstanceId();
+	}
+
+	@Override
 	public String getServiceId() {
 		return ec2ServiceProperties.getServiceId();
 	}
@@ -48,5 +53,10 @@ public class Ec2ServiceInstance implements ServiceInstance {
 	@Override
 	public Map<String, String> getMetadata() {
 		return instance.getTags().stream().collect(Collectors.toMap(Tag::getKey, Tag::getValue));
+	}
+
+	@Override
+	public String getScheme() {
+		return ec2ServiceProperties.getScheme();
 	}
 }

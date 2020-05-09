@@ -17,12 +17,10 @@ public class Ec2DiscoveryClient implements DiscoveryClient {
 
 	private final AmazonEC2 ec2;
 	private final Ec2DiscoveryProperties ec2DiscoveryProperties;
-	private final Ec2ServiceProperties ec2ServiceProperties;
 
-	Ec2DiscoveryClient(AmazonEC2 ec2, Ec2DiscoveryProperties ec2DiscoveryProperties, Ec2ServiceProperties ec2ServiceProperties) {
+	public Ec2DiscoveryClient(AmazonEC2 ec2, Ec2DiscoveryProperties ec2DiscoveryProperties) {
 		this.ec2 = ec2;
 		this.ec2DiscoveryProperties = ec2DiscoveryProperties;
-		this.ec2ServiceProperties = ec2ServiceProperties;
 	}
 
 	@Override
@@ -32,13 +30,14 @@ public class Ec2DiscoveryClient implements DiscoveryClient {
 
 	@Override
 	public List<ServiceInstance> getInstances(String serviceId) {
+		Ec2ServiceProperties serviceProperties = ec2DiscoveryProperties.getServices().get(serviceId);
 		DescribeInstancesRequest describeInstancesRequest = new DescribeInstancesRequest();
 
 		return ec2.describeInstances(describeInstancesRequest)
 				.getReservations()
 				.stream()
 				.flatMap(reservation -> reservation.getInstances().stream())
-				.map(instance -> new Ec2ServiceInstance(ec2ServiceProperties, instance))
+				.map(instance -> new Ec2ServiceInstance(serviceProperties, instance))
 				.collect(Collectors.toList());
 	}
 

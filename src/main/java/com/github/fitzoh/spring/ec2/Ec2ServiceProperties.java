@@ -1,5 +1,6 @@
 package com.github.fitzoh.spring.ec2;
 
+
 public class Ec2ServiceProperties {
 
 	private String serviceId;
@@ -8,39 +9,47 @@ public class Ec2ServiceProperties {
 
 	private boolean secure;
 
+	private String scheme;
+
 	private Ec2HostType hostType;
 
-
-	String getServiceId() {
+	public String getServiceId() {
 		return serviceId;
 	}
 
-	void setServiceId(String serviceId) {
+	public void setServiceId(String serviceId) {
 		this.serviceId = serviceId;
 	}
 
-	int getPort() {
+	public int getPort() {
 		return port;
 	}
 
-	void setPort(int port) {
+	public void setPort(int port) {
 		this.port = port;
 	}
 
-	boolean isSecure() {
+	public boolean isSecure() {
 		return secure;
 	}
 
-	void setSecure(boolean secure) {
+	public void setSecure(boolean secure) {
 		this.secure = secure;
 	}
 
-	Ec2HostType getHostType() {
+	public String getScheme() {
+		return scheme;
+	}
+
+	public void setScheme(String scheme) {
+		this.scheme = scheme;
+	}
+
+	public Ec2HostType getHostType() {
 		return hostType;
 	}
 
-	void setHostType(Ec2HostType hostType) {
+	public void setHostType(Ec2HostType hostType) {
 		this.hostType = hostType;
 	}
-
 }
