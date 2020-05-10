@@ -26,7 +26,7 @@ public class Ec2ServiceInstance implements ServiceInstance {
 
 	@Override
 	public String getServiceId() {
-		return ec2ServiceProperties.getServiceId();
+		return ec2ServiceProperties.getId();
 	}
 
 	@Override
@@ -46,8 +46,7 @@ public class Ec2ServiceInstance implements ServiceInstance {
 
 	@Override
 	public URI getUri() {
-		String scheme = isSecure() ? "https" : "http";
-		return URI.create(String.format("%s://%s:%d", scheme, getHost(), getPort()));
+		return URI.create(String.format("%s://%s:%d", getScheme(), getHost(), getPort()));
 	}
 
 	@Override

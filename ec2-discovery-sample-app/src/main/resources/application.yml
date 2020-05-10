@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    aws:
+      discovery:
+        ec2:
+          enabled: true
+          services:
+            - id: myService
+              port: 443
+              secure: true
+              scheme: https
+              hostType: PRIVATE_IP

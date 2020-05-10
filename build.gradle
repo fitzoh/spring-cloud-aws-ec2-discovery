@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-autoconfigure:2.2.7.RELEASE")
     implementation("org.springframework.cloud:spring-cloud-aws-core:2.2.1.RELEASE")
     api("org.springframework.cloud:spring-cloud-commons:2.2.2.RELEASE")
     api("com.amazonaws:aws-java-sdk-ec2:1.11.415")

@@ -22,7 +22,7 @@ public class Ec2DiscoveryRestController {
     }
 
     @GetMapping("/services/{service}")
-    public List<ServiceInstance> serviceInstances(@PathVariable String service){
+    public List<ServiceInstance> serviceInstances(@PathVariable String service) {
         return discoveryClient.getInstances(service);
     }
 }
